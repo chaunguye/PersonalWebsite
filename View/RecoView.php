@@ -1,8 +1,32 @@
-        <?php
+<ul class="recolist">
+<?php foreach ($books as $row): ?>
+       <?php echo "
+        <li>
+        <a href=" ."index.php?webpage=singlebook&bookId=" .$row["id"] ." class=" ."linksinglebook" .">
+        <div class='bookcard'>
+            <img src='" .$row["img_path"] ."' class='recoimg'>
+            <div class='book-details'>
+                <h3>" ." " .$row["bookName"] ."</h3>
+                <p class='author'>" .$row["authorName"] ."</p>
+                <p class='category'>Category: " .$row["catename"] ."</p>
+                <p class='description'>"
+                    .$row["describ"]
+                ."</p>
+            </div>
+        </div>
+        </a>
+    </li>"; ?>
+    <?php endforeach; ?>
+</ul>
+
+<div class="pagination">
+<div class="pagelist">
+		<?php
 			unset($_GET['page']);
 			$query_link = http_build_query($_GET);
 			$query_link = $query_link ? '&' .$query_link : ';';
-		?>
+            $total_page = $inter_books["totalbook"];
+		?> 
 		
 		<?php if ($page > 1): ?>
             <li><a class="pagebutton" href="?page=<?php echo $page - 1 .$query_link; ?>">Prev</a></li>
@@ -49,3 +73,5 @@
         <?php if ($page == $total_page): ?>
 	        <li><a class="pagebutton" href="?page=<?php echo $page .$query_link; ?>">Next</a></li>
 	    <?php endif; ?>
+        </div>
+        </div>
