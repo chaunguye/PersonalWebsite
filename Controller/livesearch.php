@@ -9,12 +9,12 @@
                   LEFT JOIN category_rela ON Book.id = category_rela.bookid
                   LEFT JOIN autho_rela on Book.id = autho_rela.bookid
                   LEFT JOIN author on autho_rela.authorid = author.id
-                  WHERE bookName LIKE '{$input}%'
+                  WHERE bookName LIKE '%{$input}%'
                   LIMIT 5";
         $result = $db->query($query);
         if($result->num_rows >0){
             while ($row = $result->fetch_assoc()) {
-                echo '<a href="singlebook.php?bookId=' . $row['id'] . '">' .$row['bookName'] . '</a>';
+                echo '<a href="index.php?webpage=singlebook&bookId=' . $row['id'] . '">' .$row['bookName'] . '</a>';
             }
         }
         else{

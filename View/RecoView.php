@@ -2,19 +2,18 @@
 <?php foreach ($books as $row): ?>
        <?php echo "
         <li>
-        <a href=" ."index.php?webpage=singlebook&bookId=" .$row["id"] ." class=" ."linksinglebook" .">
         <div class='bookcard'>
-            <img src='" .$row["img_path"] ."' class='recoimg'>
+            <a href='index.php?webpage=singlebook&bookId=" .$row["id"] ."' class='linksinglebook'> <img src='" .$row["img_path"] ."' class='recoimg'></a>
             <div class='book-details'>
-                <h3>" ." " .$row["bookName"] ."</h3>
-                <p class='author'>" .$row["authorName"] ."</p>
-                <p class='category'>Category: " .$row["catename"] ."</p>
+                <a href='index.php?webpage=singlebook&bookId=" .$row["id"] ."' class='linksinglebook'><h3>" ." " .$row["bookName"] ."</h3></a>
+                <a href='index.php?webpage=author&authorId=" .$row["authorid"] ."' class='linksinglebook'><p class='author'>" .$row["authorName"] ."</p></a>
+                <a href='index.php?webpage=category&catename=" .$row["catename"] ."' class='linksinglebook'><p class='category'>Category: " .$row["catename"] ."</p></a
                 <p class='description'>"
                     .$row["describ"]
                 ."</p>
             </div>
         </div>
-        </a>
+        
     </li>"; ?>
     <?php endforeach; ?>
 </ul>

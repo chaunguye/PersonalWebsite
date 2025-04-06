@@ -34,7 +34,7 @@ initial-scale=1.0">
             You can do that base on the scores and frankly reviews from the community to decide whether to read that book.
         </p>
         <h3>Now, let's the journey begin</h3>
-        <a href="index.php?webpage=homepage"><button type="button" >Get Started</button></a>
+        <a href="index.php?webpage=register"><button type="button" >Get Started</button></a>
         <!-- <form action="index.php" >
             <button type="submit">Get Started</button>
         </form> -->

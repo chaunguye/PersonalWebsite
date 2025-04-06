@@ -26,17 +26,19 @@
             </div>
             <li><a href="#">Community</a></li>
             <li>
-                <form action="homepage.php" METHOD="GET">
-                    <input class="search-bar" id="search" name ="search" type="text" placeholder="Search.." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                </form>
+                <div class="search-drop">
+                    <form action="homepage.php" METHOD="GET">
+                        <input class="search-bar" id="search" name ="search" type="text" placeholder="Search.." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                    </form>
+                    <div id="searchresult"></div>
+                </div>
             </li>
-            <li><button class="bi bi-bell" id="ring" onclick></button></li>
+            <!-- <li><button class="bi bi-bell" id="ring" onclick></button></li> -->
             <li><button type="button" class="signbutton" onclick="window.location.href='../Page/index.php?webpage=register';">Sign Up</button><button type="button" class="signbutton" onclick="window.location.href='../Page/index.php?webpage=login';">Sign In</button></li>
             <!-- <li><button type="button" class="signbutton">Sign In</button></li> -->
         </ul>
     </nav>
 </div>
-<div id="searchresult"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
@@ -53,6 +55,7 @@
 
                     success:function(data){
                         $("#searchresult").html(data);
+                        // $("#searchresult").css("display","block");
                     }
                 });
             }else{

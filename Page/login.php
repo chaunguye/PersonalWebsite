@@ -2,11 +2,7 @@
     session_start();
     $error = $_SESSION['login_error'] ?? '';
     $status = $_SESSION['status'] ?? 'Login failed';
-    $username = $_SESSION['username'] ?? '';
-    $password = $_SESSION['password'] ?? '';
-    $verify = $_SESSION['verify'] ?? '';
-    $hash = $_SESSION['hash'] ?? '';
-    session_unset();
+    // session_unset();
     function showError($error){
         return !empty($error) ? "<p class='error_message'>$error</p>" : '';
     }
@@ -28,11 +24,6 @@
     <div class="container">
             <div><h1>Sign in</h1><div>
             <?= showError($error);   ?>
-            <?= showStatus($status);   ?>
-            <?= showStatus($username);   ?>
-            <?= showStatus($password);   ?>
-            <?= showStatus($verify);   ?>
-            <?= showStatus($hash);   ?>
             <div>
                 <form action="../Controller/login_register.php" method="POST" class="signinform">
                     <div><input type="text" name="username" placeholder="Please enter your username"> </div>

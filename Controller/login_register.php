@@ -53,7 +53,7 @@
         $password = $_POST['password'];
     
         // Secure query using prepared statements
-        $stmt = $db->prepare("SELECT userName, password FROM user WHERE userName = ?");
+        $stmt = $db->prepare("SELECT * FROM user WHERE userName = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -65,13 +65,14 @@
             if(password_verify($password, $user['password'])){
                 $_SESSION['status'] = "Login success!";
                 $_SESSION['name'] = $username;
+                $_SESSION['userid'] = $user['id'];
                 header("Location: ../Page/index.php?webpage=homepage");
                 exit();
             }
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            $_SESSION['hash'] = $user['password'];
-            $_SESSION['verify'] = password_verify($password, $user['password']) ? "True" : "False";
+            // $_SESSION['username'] = $username;
+            // $_SESSION['password'] = $password;
+            // $_SESSION['hash'] = $user['password'];
+            // $_SESSION['verify'] = password_verify($password, $user['password']) ? "True" : "False";
         }
     
         // If login fails

@@ -1,7 +1,7 @@
 <?php
     session_start();
     $error = $_SESSION['register_error'] ?? '';
-    session_unset();
+    // session_unset();
     function showError($error){
         return !empty($error) ? "<p class='error_message'>$error</p>" : '';
     }

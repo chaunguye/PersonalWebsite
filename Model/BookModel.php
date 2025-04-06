@@ -7,7 +7,7 @@ class BookModel {
     }
 
     public function getBooks($search = '', $order = 'none', $limit = 5, $offset = 0) {
-        $query = "SELECT Book.*, category_rela.catename, CONCAT(author.firstName,' ', author.lastName) as authorName
+        $query = "SELECT Book.*, category_rela.catename, author.id as authorid, CONCAT(author.firstName,' ', author.lastName) as authorName
                   FROM Book
                   LEFT JOIN category_rela ON Book.id = category_rela.bookid
                   LEFT JOIN autho_rela on Book.id = autho_rela.bookid
@@ -44,7 +44,7 @@ class BookModel {
         return ['books' => $books, 'totalbook' => $total_page];
     }
     public function getBookById($id){
-        $query = "SELECT Book.*, category_rela.catename, CONCAT(author.firstName,' ', author.lastName) as authorName, author.bio, author.nation
+        $query = "SELECT Book.*, category_rela.catename, author.id as authorid, CONCAT(author.firstName,' ', author.lastName) as authorName, author.bio, author.nation
         FROM Book
         LEFT JOIN category_rela ON Book.id = category_rela.bookid
         LEFT JOIN autho_rela on Book.id = autho_rela.bookid
