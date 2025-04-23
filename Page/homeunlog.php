@@ -1,3 +1,8 @@
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +11,7 @@
 initial-scale=1.0">
  <title>My New Website</title>
  <link rel="stylesheet" href="../Assests/css/style.css">
+ <link rel="stylesheet" href="../Assests/css/navbarstyle2.css">
  <link rel="databaseconnect" href="../config/connection.php">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +22,7 @@ initial-scale=1.0">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
 <style>
     .news{
     width: 40%;
@@ -34,7 +41,12 @@ initial-scale=1.0">
             You can do that base on the scores and frankly reviews from the community to decide whether to read that book.
         </p>
         <h3>Now, let's the journey begin</h3>
-        <a href="index.php?webpage=register"><button type="button" >Get Started</button></a>
+        <?php if (isset($_SESSION['userid'])):?>
+            <a href="index.php?webpage=homepage"><button type="button" >Get Started</button></a>
+        <?php else:?>
+            <a href="index.php?webpage=register"><button type="button" >Get Started</button></a>
+        <?php endif;?>
+        
         <!-- <form action="index.php" >
             <button type="submit">Get Started</button>
         </form> -->
@@ -62,6 +74,7 @@ initial-scale=1.0">
 
 <footer>
     <p>&copy; 2025 My Website. All Rights Reserved.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15678.045248799588!2d106.6394476714288!3d10.772095534491177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ec3c161a3fb%3A0xef77cd47a1cc691e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIC0gxJDhuqFpIGjhu41jIFF14buRYyBnaWEgVFAuSENN!5e0!3m2!1svi!2s!4v1745390971992!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </footer>
 </body>
 </html>

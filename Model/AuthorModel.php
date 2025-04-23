@@ -25,7 +25,9 @@ class AuthorModel {
         //     return ['author' => $author, 'authorbook' => []];
         // }
 
-        $sql = "SELECT * FROM book WHERE id IN (" . implode(",", $bookids) . ")";
+        $sql = "SELECT book.*, category_rela.* FROM book
+        LEFT JOIN category_rela ON book.id = category_rela.bookid
+        WHERE id IN (" . implode(",", $bookids) . ")";
         $total_book = $this->conn->query($sql);
         $total_book_result = $total_book->fetch_all(MYSQLI_ASSOC);
 

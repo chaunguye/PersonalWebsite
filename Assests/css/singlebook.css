@@ -1,16 +1,29 @@
-
+/* *{
+    padding: 0;
+    margin: 0;
+} */
+ body{
+    padding: 0;
+    margin: 0;
+ }
 .container{
     display: flex;
     flex-direction: row;
     padding-top: 4.5rem;
     background-color: #FAF1E6;
-    /* height: 500vh; */
+    padding-bottom: 20px;
 }
+.montserrat-normal {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
 
 .bookpresent-left{
     display: flex;
     flex-direction: column;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     width: 35%;
     align-items: center;
     background-color: #EBE5C2;
@@ -24,12 +37,12 @@
     top:4.5rem;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    /* width: 30%; */
 }
 .buttonunder{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    /* font-size: 1rem; */
 }
 .bookpresent-right{
     display: flex;
@@ -38,9 +51,6 @@
     height:auto;
     width: 65%;
     padding-left: 20px;
-    /* overflow-y: auto;
-    max-height: 90vh; */
-    
 }
 
 .bigimage{
@@ -49,13 +59,15 @@
 }
 
 .bookpresent-left button{
-    padding: 10px 0px;
-    width: 18rem;
-    margin: 10px;
+    padding: 10px 20px;
+    width: 100%;
+    /* margin: 10px; */
+    margin-bottom: 20px;
     border-radius: 6px;
     background-color: #504B38;
     color:#EBE5C2;
     font-size: 1rem;
+    align-self: center;
 }
 hr {
     border: none;
@@ -64,6 +76,10 @@ hr {
     margin: 20px 0;
 }
 .bookpresent-right>div>p{
+    padding-left: 25px;
+
+}
+.bookpresent-right>div>a>p{
     padding-left: 25px;
 
 }
@@ -79,11 +95,22 @@ hr {
     font-size: 1.25rem;
     font-style: italic;
 }
+.author2{
+    font-size: 1rem;
+    font-style: italic;
+}
+.italic{
+    font-style: italic;
+}
+.bold{
+    font-weight: bold;
+}
+
 .rating {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    color: #F4C150; /* golden star */
+    color: #F4C150; 
     gap: 0.2rem;
     padding-left: 20px;
   }
@@ -93,4 +120,116 @@ hr {
     margin-left: 0.5rem;
     color: #333;
   }
+
+  .reviewuser{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+  }
+  .review_userinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    justify-content: center;
+  }
+  .review_userinfo button{
+    background-color: #504B38;
+    color: #EBE5C2;
+    padding: 10px;
+    border-radius: 6px;;
+  }
+
+  .review_userreview{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding-right: 30px;
+    justify-content: center;
+  }
   
+
+   .vline {
+    width: 2px;
+    background-color: #504B38;
+    margin: 20px 10px;
+    border-radius: 1px;
+    opacity: 0.3;
+}
+
+.hline {
+    height: 2px;
+    background-color: #504B38;
+    margin: 10px 0;
+    border-radius: 1px;
+    opacity: 0.3;
+    width: 100%; /* This makes it span across */
+}
+
+.reviewsection form{
+    padding-left: 20px;
+}
+
+.reviewsection {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #F7F0E8; /* similar to your current theme */
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.review-form label {
+    font-weight: 600;
+    color: #504B38;
+}
+
+.review-form input[type="number"],
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.review-form textarea {
+    resize: vertical;
+}
+
+.review-form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #504B38;
+    color: #EBE5C2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.review-form button:hover {
+    background-color: #3e3a2d;
+}
+
+.followed{
+    background-color: #EBE5C2 !important;
+    color: #504B38 !important;
+    border: solid 1px #504B38 !important;
+}
+.author-link{
+    text-decoration: none;
+    color: black;
+    /* padding-left: 20px; */
+}
+

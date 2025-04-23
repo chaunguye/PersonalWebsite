@@ -18,36 +18,13 @@
             $_SESSION['register_error'] = 'Username is already used!';
         }
         else{
-            $db->query("INSERT INTO user (firstName, lastName, dob, userName, password, sex, bio) VALUES('$fname', '$lname' , '$dob', '$username', '$password', '$sex', '$bio')");
+            $db->query("INSERT INTO user (firstName, lastName, dob, userName, password, sex, bio, img_path) VALUES('$fname', '$lname' , '$dob', '$username', '$password', '$sex', '$bio', '../Assests/user_img/default.jpg')");
             header("Location: ../Page/index.php?webpage=login");
             exit();
         }
         header("Location: ../Page/index.php?webpage=register");
         exit();
     }
-    // if(isset($_POST['login'])){
-    //     $username = $_POST['username'];
-    //     // $password = password_hash($_POST['password'], PASSWORD_DEFAULT) ;
-    //     $password = $_POST['password'] ;
-    //     // $checkuser = $db->query("SELECT * FROM user WHERE userName = '$username'");
-    //     $stmt = $db->prepare("SELECT userName, password FROM user WHERE userName = ?");
-    //     $stmt->bind_param("s", $username);
-    //     $stmt->execute();
-    //     $checkuser = $stmt->get_result();
-
-    //     if ($checkuser->num_rows >0){
-    //         $user = $checkuser->fetch_assoc();
-    //         if(password_verify($password, $user['password'])){
-    //             $_SESSION['status'] = "Login success!";
-    //             $_SESSION['name'] = $username;
-    //             header("Location: ../Page/homepage.php");
-    //             exit();
-    //         }
-    //     }
-    //     $_SESSION['login_error'] = "Incorrect Username or Password!";
-    //     header("Location: ../Page/login.php");
-    //     exit();
-    // }
     if(isset($_POST['login'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -66,13 +43,20 @@
                 $_SESSION['status'] = "Login success!";
                 $_SESSION['name'] = $username;
                 $_SESSION['userid'] = $user['id'];
-                header("Location: ../Page/index.php?webpage=homepage");
-                exit();
+                $_SESSION['img_path'] = $user['img_path'];
+                if ($user['role'] === 'admin'){
+                    $_SESSION['role'] = "admin";
+                    header("Location: ../Page/index.php?webpage=adminhomepage");
+                    exit();
+                }
+                else{
+                    $_SESSION['role'] = "user";
+                    header("Location: ../Page/index.php?webpage=homepage");
+                    exit();
+                }
+                // header("Location: ../Page/index.php?webpage=homepage");
+                // exit();
             }
-            // $_SESSION['username'] = $username;
-            // $_SESSION['password'] = $password;
-            // $_SESSION['hash'] = $user['password'];
-            // $_SESSION['verify'] = password_verify($password, $user['password']) ? "True" : "False";
         }
     
         // If login fails

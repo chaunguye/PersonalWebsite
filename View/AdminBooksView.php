@@ -1,0 +1,98 @@
+
+<ul class="recolist">
+<?php foreach ($books as $row): ?>
+    <li>
+        <div class='bookcard'>
+            <div class="combine">
+            <a href='index.php?webpage=modifybook&action=modify&bookId=<?=$row["id"]?>' class='linksinglebook'>
+                <img src='<?= $row["img_path"] ?>' class='recoimg'>
+            </a>
+            <div class='book-details'>
+                <a href='index.php?webpage=modifybook&action=modify&bookId=<?=$row["id"]?>' class='linksinglebook'>
+                    <h3><?= $row["bookName"] ?></h3>
+                </a>
+                <a class='linksinglebook'>
+                    <p class='author'><?= $row["authorName"] ?></p>
+                </a>
+                <a class='linksinglebook'>
+                    <p class='category'>Category: <?= $row["catename"] ?></p>
+                </a>
+                <p class='description'><?= $row["describ"] ?></p>
+            </div>
+            </div>
+
+            <!-- Delete Button -->
+            <!-- <a href='../Page/index.php?webpage=adminhomepage&action=delete&bookId=<?= $row["id"] ?>'
+               onclick="return confirm('Are you sure you want to delete this book?');"
+               class='delete-button'>
+                🗑 Delete
+            </a> -->
+            <form action="../Controller/BookControl.php" method="post" onsubmit="return confirm('Are you sure you want to delete this book?');" style="display:inline;">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="bookId" value="<?= $row['id'] ?>">
+                <button type="submit" class="delete-button">🗑</button>
+            </form>
+        </div>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+
+<div class="pagination">
+<div class="pagelist">
+		<?php
+			unset($_GET['page']);
+			$query_link = http_build_query($_GET);
+			$query_link = $query_link ? '&' .$query_link : ';';
+            $total_page = $inter_books["totalbook"];
+		?> 
+		
+		<?php if ($page > 1): ?>
+            <li><a class="pagebutton" href="?page=<?php echo $page - 1 .$query_link; ?>">Prev</a></li>
+        <?php endif; ?>
+
+        <?php if ($page == 1): ?>
+            <li><a class="pagebutton" href="?page=<?php echo $page .$query_link; ?>">Prev</a></li>
+        <?php endif; ?>
+
+        <?php if ($page > 4): ?>
+	        <li><a href="?page=1<?php echo $query_link;?>">1</a></li>
+	        <li class="dots">...</li>
+	    <?php endif; ?>
+        <?php if ($page == 4): ?>
+	        <li><a href="?page=1<?php echo $query_link;?>">1</a></li>
+	    <?php endif; ?>
+        
+        <?php if ($page - 2 > 0): ?>
+	        <li><a href="?page=<?php echo $page-2 .$query_link; ?>"><?php echo $page-2; ?></a></li>
+	    <?php endif; ?>
+        <?php if ($page - 1 > 0): ?>
+	        <li><a href="?page=<?php echo $page-1 .$query_link; ?>"><?php echo $page-1; ?></a></li>
+	    <?php endif; ?>
+
+        <li><a class="current_page" href="?page=<?php echo $page .$query_link; ?>"><?php echo $page ?></a></li>
+
+        <?php if ($page < $total_page): ?>
+	        <li><a href="?page=<?php echo $page+1 .$query_link; ?>"><?php echo $page+1; ?></a></li>
+	    <?php endif; ?>
+        <?php if ($page + 1 < $total_page): ?>
+	        <li><a href="?page=<?php echo $page+2 .$query_link; ?>"><?php echo $page+2; ?></a></li>
+	    <?php endif; ?>
+
+        <?php if ($page < $total_page-3): ?>
+	        <li class="dots">...</li>
+            <li><a href="?page=<?php echo $total_page .$query_link; ?>"><?php echo $total_page; ?></a></li>
+	    <?php endif; ?>
+        <?php if ($page == $total_page-3): ?>
+	        <li class="dots">...</li>
+            <li><a href="?page=<?php echo $total_page .$query_link; ?>"><?php echo $total_page; ?></a></li>
+	    <?php endif; ?>
+
+        <?php if ($page < $total_page): ?>
+	        <li><a class="pagebutton" href="?page=<?php echo $page+1 .$query_link; ?>">Next</a></li>
+	    <?php endif; ?>
+        <?php if ($page == $total_page): ?>
+	        <li><a class="pagebutton" href="?page=<?php echo $page .$query_link; ?>">Next</a></li>
+	    <?php endif; ?>
+        </div>
+        </div>

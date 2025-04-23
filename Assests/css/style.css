@@ -5,6 +5,7 @@ body{
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-color: #FFF2DB;;
 }
 .header{
     background-color: #EBE5C2;
@@ -77,6 +78,7 @@ div>h1{
     flex-direction: row;
     padding:0;
     margin:0;
+    padding-top: 4.5rem;
 }
 .Bookshelf{
     background-color: #B9B28A;
@@ -103,6 +105,12 @@ div>h2{
     box-sizing: border-box; */
     /* width: 53%; */
     width: 72%;
+    position: relative;
+}
+.sort-buttons{
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
 }
 .recolist{
     list-style-type: none;
@@ -329,4 +337,22 @@ footer{
   .search-drop:hover .dropbtn {background-color: #f1f1f1;} */
 
   
+.shelflink{
+    text-decoration: none;
+    /* padding: 10px; */
+    color: #F8F3D9;
+    /* margin: 10px; */
+}
+
+@media (max-width: 900px) {
+    .container{
+        flex-direction: column;
+    }
+    .Bookshelf{
+        display: none;
+    }
+    .news{
+        width: 100%;
+    }
+}
 

@@ -27,12 +27,32 @@ class ReviewControl{
         $this->model->insertReview($bookId, $userId, $score, $text);
     }
     }
+    public function updateReview() {
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+        $bookId = $_POST['book_id'];
+        $userId = $_SESSION['userid'];
+        $score = $_POST['score'];
+        $text = $_POST['review_text'] ?? ''; 
+
+        if ($score === '' || !is_numeric($score)) {
+            echo "Score is required and must be a number!";
+            exit();
+        }
+        $this->model->updateReview($bookId, $userId, $score, $text);
+    }
+    }
 }
 
 $database = new Database();
 $db = $database->connect();
 $reviewCon = new ReviewControl($db);
-$reviewCon->insertReview();
+if (isset($_POST['insertReview'])){
+    $reviewCon->insertReview();
+}
+else {
+    $reviewCon->updateReview();
+}
+
 ?>
 
 

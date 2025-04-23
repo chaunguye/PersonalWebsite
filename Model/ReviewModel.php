@@ -19,6 +19,25 @@ class ReviewModel{
         echo "Failed to submit review.";
     }
     }
+
+    public function updateReview($bookId, $userId, $score, $text) {
+        echo $bookId;
+        echo $userId;
+        echo $score;
+        echo $text;
+        $query = "UPDATE review 
+        SET score = ?, review =?
+        WHERE bookid = ? AND userid = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("dsii", $score, $text, $bookId, $userId);
+
+    if ($stmt->execute()) {
+        header("Location: ../Page/index.php?webpage=singlebook&bookId=$bookId");
+        exit();
+    } else {
+        echo "Failed to modify review.";
+    }
+    }
 }
 
 

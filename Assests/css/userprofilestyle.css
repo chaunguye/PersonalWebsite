@@ -1,0 +1,91 @@
+/* .profile-container img{
+    width: 100px;
+} */
+body {
+    /* font-family: 'Montserrat', sans-serif; */
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+  }
+  .container{
+    margin-top: 7rem;
+  }
+  
+  .profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #333;
+  }
+  
+  .profile-image {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ccc;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  form input[type="text"],
+  form input[type="date"],
+  form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  form textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  form input[type="file"] {
+    margin-top: 8px;
+  }
+  
+  button[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #504B38;
+    color: #EBE5C2;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #28261c;
+  }
+  
+  .profile-container p {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

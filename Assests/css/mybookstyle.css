@@ -1,0 +1,91 @@
+body {
+    /* font-family: 'Montserrat', sans-serif; */
+    background: #FFF2DB;
+    margin: 0;
+    padding: 0;
+  }
+  .bookbody{
+    padding: 4.5rem 20px;
+    min-height: 90vh;
+  }
+
+  .bookshelf-page {
+    padding: 40px;
+  }
+
+  .shelf-section {
+    margin-bottom: 50px;
+  }
+
+  .shelf-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .book-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 10px;
+  }
+
+  .book-card {
+    min-width: 150px;
+    height: 300px;
+    width: 20%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .book-card h4 {
+    font-size: 16px;
+    margin: 10px 0 0;
+    /* width: 20%; */
+  }
+
+  .book-card button {
+    /* width: 0%; */
+    padding: 8px;
+    background-color: #504B38;
+    color: #EBE5C2;
+    border-radius: 2px;
+    margin-top: 10px;
+    width: 120px;
+  }
+
+  .book-card img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .book-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .book-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+
+  .book-scroll::-webkit-scrollbar-track {
+    background: #eee;
+  }
+  .booklink{
+    color: #000000;
+    text-decoration: none;
+}
+.unlog-mybook{
+  margin-top: 5rem;
+  min-height: 90vh;
+}

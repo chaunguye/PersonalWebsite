@@ -1,0 +1,63 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    padding-top: 3rem;
+}
+.container form {
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  .container form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .container form input[type="text"],
+  .container form input[type="number"],
+  .container form input[type="file"],
+  .container form textarea,
+  .container form select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  .container form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+
+  .container form select[multiple] {
+    height: 120px;
+  }
+
+  .container form button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #504B38;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .container form button:hover {
+    background-color: #2a271d;
+  }

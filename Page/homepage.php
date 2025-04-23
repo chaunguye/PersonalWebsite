@@ -1,9 +1,8 @@
-<!-- <?php
-session_start();
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
-?> -->
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+?>
 
 
 <!DOCTYPE html>
@@ -14,73 +13,41 @@ echo '</pre>';
 initial-scale=1.0">
  <title>My New Website</title>
  <link rel="stylesheet" href="../Assests/css/style.css">
+ <link rel="stylesheet" href="../Assests/css/navbarstyle2.css">
  <link rel="databaseconnect" href="../config/connection.php">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </head>
 <body>
 
 <?php include 'navbar.php'; ?>
 
-<img src="../Assests/image/theme2.jpg" id="themeimg">
+<!-- <img src="../Assests/image/theme2.jpg" id="themeimg"> -->
 <div class="container">
-    <div class="Bookshelf">
-        <h2>Bookshelf</h2>
-        <ul>
-            <li>
-                <a class="booklink" href="#">Currently Reading Books</a>
-                <ul> 
-                    <li>Book 1</li>
-                    <li>Book 2</li>
-                    <li>Book 3</li>
-                    <li>More</li>
-                </ul>
-            </li>
-            <li>
-                <a class="booklink" href="#">Later Reading</a>
-                <ul> 
-                    <li>Book 1</li>
-                    <li>Book 2</li>
-                    <li>Book 3</li>
-                    <li>More</li>
-                </ul>
-            </li>
-            <li>
-                <a class="booklink" href="#">Liked Books</a>
-                <ul> 
-                    <li>Book 1</li>
-                    <li>Book 2</li>
-                    <li>Book 3</li>
-                    <li>More</li>
-                </ul>
-            </li>
-            <li>
-                <a class="booklink" href="#">Your Friends Also Like</a>
-                <ul> 
-                    <li>Book 1</li>
-                    <li>Book 2</li>
-                    <li>Book 3</li>
-                    <li>More</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <?php
+        include '../Controller/BookShelfController.php';
+    ?>
     <div class="Recommendation">
         <h2>Recommendation</h2>
+        <div class="sort-buttons">
         <button class="sorbut" onclick="sortBy('asc')">Sort A-Z</button>
         <button class="sorbut" onclick="sortBy('desc')">Sort Z-A</button>
+        </div>
         <script>
             function sortBy(order){
+                let currentSort = new URL(window.location.href).searchParams.get('sort') || '';
+                if (currentSort == order){
+                    let url = new URL(window.location.href);
+                    url.searchParams.delete('sort'); 
+                    window.location.href = url.toString();
+                }
+                else{
                 let url = new URL(window.location.href);
-                url.searchParams.set('sort', order); // Replaces 'sort' if it exists, otherwise adds it
+                url.searchParams.set('sort', order); 
                 window.location.href = url.toString();
+                }
             }
         </script> 
         <?php
@@ -110,6 +77,7 @@ initial-scale=1.0">
 
 <footer>
     <p>&copy; 2025 My Website. All Rights Reserved.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15678.045248799588!2d106.6394476714288!3d10.772095534491177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ec3c161a3fb%3A0xef77cd47a1cc691e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIC0gxJDhuqFpIGjhu41jIFF14buRYyBnaWEgVFAuSENN!5e0!3m2!1svi!2s!4v1745390971992!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </footer>
 </body>
 </html>

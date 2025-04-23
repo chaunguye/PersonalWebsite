@@ -7,7 +7,7 @@
             <div class='book-details'>
                 <a href='index.php?webpage=singlebook&bookId=" .$row["id"] ."' class='linksinglebook'><h3>" ." " .$row["bookName"] ."</h3></a>
                 <a href='index.php?webpage=author&authorId=" .$row["authorid"] ."' class='linksinglebook'><p class='author'>" .$row["authorName"] ."</p></a>
-                <a href='index.php?webpage=category&catename=" .$row["catename"] ."' class='linksinglebook'><p class='category'>Category: " .$row["catename"] ."</p></a
+                <a href='index.php?webpage=homepage&category=" .$row["catename"] ."' class='linksinglebook'><p class='category'>Category: " .$row["catename"] ."</p></a
                 <p class='description'>"
                     .$row["describ"]
                 ."</p>
@@ -39,10 +39,8 @@
 	        <li><a href="?page=1<?php echo $query_link;?>">1</a></li>
 	        <li class="dots">...</li>
 	    <?php endif; ?>
-
-        <?php if ($page - 2 > 0): ?>
+        <?php if ($page == 4): ?>
 	        <li><a href="?page=1<?php echo $query_link;?>">1</a></li>
-	        <li class="dots">...</li>
 	    <?php endif; ?>
         
         <?php if ($page - 2 > 0): ?>
@@ -54,14 +52,18 @@
 
         <li><a class="current_page" href="?page=<?php echo $page .$query_link; ?>"><?php echo $page ?></a></li>
 
-        <?php if ($page < $total_page -1): ?>
-	        <li><a href="?page=<?php echo $page+2 .$query_link; ?>"><?php echo $page+1; ?></a></li>
-	    <?php endif; ?>
         <?php if ($page < $total_page): ?>
 	        <li><a href="?page=<?php echo $page+1 .$query_link; ?>"><?php echo $page+1; ?></a></li>
 	    <?php endif; ?>
+        <?php if ($page + 1 < $total_page): ?>
+	        <li><a href="?page=<?php echo $page+2 .$query_link; ?>"><?php echo $page+2; ?></a></li>
+	    <?php endif; ?>
 
-        <?php if ($page < $total_page-2): ?>
+        <?php if ($page < $total_page-3): ?>
+	        <li class="dots">...</li>
+            <li><a href="?page=<?php echo $total_page .$query_link; ?>"><?php echo $total_page; ?></a></li>
+	    <?php endif; ?>
+        <?php if ($page == $total_page-3): ?>
 	        <li class="dots">...</li>
             <li><a href="?page=<?php echo $total_page .$query_link; ?>"><?php echo $total_page; ?></a></li>
 	    <?php endif; ?>

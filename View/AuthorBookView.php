@@ -1,6 +1,7 @@
 
     <div class="book-section">
-        <button class="scroll-btn scroll-left" onclick="scrollBooks(-1)">&#8592;</button>
+    <button class="scroll-btn scroll-left" onclick="scrollBooks(-1)">&#8592;</button>
+
         <div class="book-list" id="bookList">
             <?php foreach ($book as $row): ?>
                 <div class="book-card">
